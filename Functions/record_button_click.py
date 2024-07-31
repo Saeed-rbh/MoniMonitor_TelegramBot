@@ -27,7 +27,7 @@ async def record_button_click(update, context):
         printabletimestamp = datetime.strptime(timestamp, '%Y-%m-%d %H:%M').strftime('%H:%M - %d/%m/%Y')
 
         record_entry = {'Timestamp': timestamp,
-                        'Category': category, 'Amount': amount, 'Reason': reason, 'Label': ''}
+                        'Category': category.replace(" ", ""), 'Amount': amount, 'Reason': reason, 'Label': ''}
 
         user_id = str(update.callback_query.from_user.id)
         record_type = "daily"
@@ -64,7 +64,7 @@ async def record_button_click(update, context):
             timestamp = datetime.now().strftime('%Y-%m-%d %H:%M')
 
             record_entry = {'Timestamp': timestamp,
-                        'Category': category, 'Amount': amount, 'Reason': reason, 'Label': ''}
+                        'Category': category.replace(" ", ""), 'Amount': amount, 'Reason': reason, 'Label': ''}
 
             user_id = str(update.callback_query.from_user.id)
             record_type = "monthly"
