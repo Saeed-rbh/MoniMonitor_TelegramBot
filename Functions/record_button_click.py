@@ -97,22 +97,22 @@ async def record_button_click(update, context):
         await query.message.reply_text(
                 'To record new transactions, use the following formats:\n\n'
                 '• <b>Spending</b> (record your spending):\n'
-                '  - Format: /e amount reason\n'
-                '  - Example: <b>/e 50 Grocery</b>\n\n'
+                '- Format: /e amount reason\n'
+                '- Example: <b>/e 50 Grocery</b>\n\n'
                 '• <b>Income</b> (record your income):\n'
-                '  - Format: /i amount reason\n'
-                '  - Example: <b>/i 1500 Job Payment</b>\n',
+                '- Format: /i amount reason\n'
+                '- Example: <b>/i 1500 Job Payment</b>\n',
                 parse_mode='HTML')
         
     elif action == "new_transaction":
         await query.message.reply_text(
                 'To record new transactions, use the following formats:\n\n'
                 '• <b>Spending</b> (record your spending):\n'
-                '  - Format: /e amount reason\n'
-                '  - Example: <b>/e 50 Grocery</b>\n\n'
+                '- Format: /e amount reason\n'
+                '- Example: <b>/e 50 Grocery</b>\n\n'
                 '• <b>Income</b> (record your income):\n'
-                '  - Format: /i amount reason\n'
-                '  - Example: <b>/i 1500 Job Payment</b>\n',
+                '- Format: /i amount reason\n'
+                '- Example: <b>/i 1500 Job Payment</b>\n',
                 parse_mode='HTML')
         
     elif action == "Delete_transaction":

@@ -21,12 +21,12 @@ async def record_monthly_Income(update, context):
 async def record_monthly_Saving(update, context):
     await record(update, context, 'Save&Invest', 'monthly')
 
-async def record(update: Update, category: str,Timescale: str) -> None:
+async def record(update: Update, context: ContextTypes.DEFAULT_TYPE, category: str,Timescale: str) -> None:
     message = update.message.text
 
     parts = message.split(maxsplit=2)
     if len(parts) < 2:
-
+        
         if category.lower()[0] == 'e':
             example = '50 Grocery'
         elif category.lower()[0] == 'i':
