@@ -10,7 +10,7 @@ async def record_daily_Income(update, context):
     await record(update, context, 'Income', 'daily')
 
 async def record_daily_Saving(update, context):
-    await record(update, context, 'Save&Invest', 'daily')
+    await record(update, context, 'Save & Invest', 'daily')
 
 async def record_monthly_Expenses(update, context):
     await record(update, context, 'Expense', 'monthly')
@@ -19,7 +19,7 @@ async def record_monthly_Income(update, context):
     await record(update, context, 'Income', 'monthly')
 
 async def record_monthly_Saving(update, context):
-    await record(update, context, 'Save&Invest', 'monthly')
+    await record(update, context, 'Save & Invest', 'monthly')
 
 async def record(update: Update, context: ContextTypes.DEFAULT_TYPE, category: str,Timescale: str) -> None:
     message = update.message.text
