@@ -49,7 +49,7 @@ async def record_button_click(update, context):
 
         await query.message.reply_text(
             '----------\n'
-            f'  Successfully added to <b>Daily</b> Wallet:\n\n• New <b>Daily {category}</b>\n• Amount: <b>{amount:.2f}$</b>\n• Reason: <b>{reason}</b>\n• Time: <b>{printabletimestamp}</b>\n'
+            f'  Successfully added to <b>Daily</b> Wallet:\n\n• New <b>Daily {category}</b>\n• Amount: $<b>{amount:.2f}</b>\n• Reason: <b>{reason}</b>\n• Time: <b>{printabletimestamp}</b>\n'
             '----------\n',
             parse_mode='HTML',
             reply_markup=reply_markup
@@ -85,7 +85,7 @@ async def record_button_click(update, context):
 
             await query.message.reply_text(
                 '----------\n'
-                f'  Successfully added to <b>Monthly</b> Wallet:\n\n• New <b>Monthly {category}</b>\n• Amount: <b>{amount:.2f}$</b>\n• Reason: <b>{reason}</b>\n'
+                f'  Successfully added to <b>Monthly</b> Wallet:\n\n• New <b>Monthly {category}</b>\n• Amount: $<b>{amount:.2f}</b>\n• Reason: <b>{reason}</b>\n'
                 '----------\n',
                 parse_mode='HTML',
                 reply_markup=reply_markup
@@ -95,20 +95,24 @@ async def record_button_click(update, context):
     elif action == "modify":
         await query.message.delete()
         await query.message.reply_text(
-                '----------\n'
-                ' Send me a message with the format:\n\n'
-                '• <b>Spending</b>(record your Spending):\n- Format:  "/e amount reason"\n-Example: <b>/e 50 Grocery</b>\n\n'
-                '• <b>Income</b>(record your Income):\n- Format:  "/i amount reason"\n-Example: <b>/i 1500 Job Payment</b>\n'
-                '----------\n',
+                'To record new transactions, use the following formats:\n\n'
+                '• <b>Spending</b> (record your spending):\n'
+                '  - Format: /e amount reason\n'
+                '  - Example: <b>/e 50 Grocery</b>\n\n'
+                '• <b>Income</b> (record your income):\n'
+                '  - Format: /i amount reason\n'
+                '  - Example: <b>/i 1500 Job Payment</b>\n',
                 parse_mode='HTML')
         
     elif action == "new_transaction":
         await query.message.reply_text(
-                '----------\n'
-                ' Send me a message with the format:\n\n'
-                '• <b>Spending</b>(record your Spending):\n- Format:  "/e amount reason"\n-Example: <b>/e 50 Grocery</b>\n\n'
-                '• <b>Income</b>(record your Income):\n- Format:  "/i amount reason"\n-Example: <b>/i 1500 Job Payment</b>\n'
-                '----------\n',
+                'To record new transactions, use the following formats:\n\n'
+                '• <b>Spending</b> (record your spending):\n'
+                '  - Format: /e amount reason\n'
+                '  - Example: <b>/e 50 Grocery</b>\n\n'
+                '• <b>Income</b> (record your income):\n'
+                '  - Format: /i amount reason\n'
+                '  - Example: <b>/i 1500 Job Payment</b>\n',
                 parse_mode='HTML')
         
     elif action == "Delete_transaction":

@@ -5,10 +5,7 @@ from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, CallbackQueryHandler
 from Functions.start import start
 from Functions.monthly_Instructions import monthly_Instructions
-from Functions.record import record_daily_Spending
-from Functions.record import record_daily_Income
-from Functions.record import record_monthly_Spending
-from Functions.record import record_monthly_Income
+from Functions.record import record_daily_Expenses,record_daily_Income,record_monthly_Expenses,record_monthly_Income,record_daily_Saving,record_monthly_Saving
 from Functions.history import history
 from Functions.clear_history import clear_history
 from Functions.delete_transaction import delete_transaction
@@ -38,14 +35,14 @@ async def handle_event(event):
     app.add_handler(CommandHandler("new", new_transaction))
     app.add_handler(CommandHandler("i", record_daily_Income))
     app.add_handler(CommandHandler("mi", record_monthly_Income))
+    app.add_handler(CommandHandler("e", record_daily_Expenses))
+    app.add_handler(CommandHandler("me", record_monthly_Expenses))
+    app.add_handler(CommandHandler("e", record_daily_Saving))
+    app.add_handler(CommandHandler("me", record_monthly_Saving))
 
     app.add_handler(CommandHandler("monthly", monthly_Instructions))
     app.add_handler(CommandHandler("history", history))
     app.add_handler(CommandHandler("clear", clear_history))
-    app.add_handler(CommandHandler("s", record_daily_Spending))
-    
-    app.add_handler(CommandHandler("ms", record_monthly_Spending))
-    
     app.add_handler(CommandHandler("d", delete_transaction))
     app.add_handler(CommandHandler("m", modify_transaction))
     

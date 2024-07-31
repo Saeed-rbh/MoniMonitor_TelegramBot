@@ -3,27 +3,37 @@ from telegram import InlineKeyboardButton, InlineKeyboardMarkup,Update
 from telegram.ext import ContextTypes
 from Functions.extract_float import extract_float
 
-async def record_daily_Spending(update, context):
-    await record(update, context, 'Spending', 'daily')
+async def record_daily_Expenses(update, context):
+    await record(update, context, 'Expenses', 'daily')
 
 async def record_daily_Income(update, context):
     await record(update, context, 'Income', 'daily')
 
-async def record_monthly_Spending(update, context):
-    await record(update, context, 'Spending', 'monthly')
+async def record_daily_Saving(update, context):
+    await record(update, context, 'Save&Invest', 'daily')
+
+async def record_monthly_Expenses(update, context):
+    await record(update, context, 'Expenses', 'monthly')
 
 async def record_monthly_Income(update, context):
     await record(update, context, 'Income', 'monthly')
 
-async def record(update: Update, context: ContextTypes.DEFAULT_TYPE, category: str,Timescale: str) -> None:
+async def record_monthly_Saving(update, context):
+    await record(update, context, 'Save&Invest', 'monthly')
+
+async def record(update: Update, category: str,Timescale: str) -> None:
     message = update.message.text
 
     parts = message.split(maxsplit=2)
     if len(parts) < 2:
+
         if category.lower()[0] == 'e':
             example = '50 Grocery'
         elif category.lower()[0] == 'i':
             example = '1500 Job Payment'
+        elif category.lower()[0] == 's':
+            example = '500 Stock'
+
         await update.message.reply_text(
             '• Please use the valid format!!!\n'
             f'- Format: "/{category.lower()[0]} <amount> <reason>"\n'
