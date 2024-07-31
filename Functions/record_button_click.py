@@ -24,6 +24,7 @@ async def record_button_click(update, context):
         reason = data[3]      
 
         timestamp = datetime.now().strftime('%Y-%m-%d %H:%M')
+        printabletimestamp = datetime.strptime(timestamp, '%Y-%m-%d %H:%M').strftime('%H:%M - %d/%m/%Y')
 
         record_entry = {'Timestamp': timestamp,
                         'Category': category, 'Amount': amount, 'Reason': reason, 'Label': ''}
@@ -48,7 +49,7 @@ async def record_button_click(update, context):
 
         await query.message.reply_text(
             '----------\n'
-            f'  Successfully added to <b>Daily</b> Wallet:\n\n• New <b>Daily {category}</b>\n• Amount: <b>{amount:.2f}$</b>\n• Reason: <b>{reason}</b>\n• Time: <b>{timestamp}</b>\n'
+            f'  Successfully added to <b>Daily</b> Wallet:\n\n• New <b>Daily {category}</b>\n• Amount: <b>{amount:.2f}$</b>\n• Reason: <b>{reason}</b>\n• Time: <b>{printabletimestamp}</b>\n'
             '----------\n',
             parse_mode='HTML',
             reply_markup=reply_markup

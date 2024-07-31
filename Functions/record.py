@@ -42,7 +42,7 @@ async def record(update: Update, context: ContextTypes.DEFAULT_TYPE, category: s
     try:
         reason = parts[2]
     except:
-        reason = 'No Comment'
+        reason = 'No Reason Provided'
 
     if Timescale == 'daily':
         callback = f"add_to_daily_wallet:{category}:{amount}:{reason}"
@@ -58,7 +58,7 @@ async def record(update: Update, context: ContextTypes.DEFAULT_TYPE, category: s
     reply_markup = InlineKeyboardMarkup(inline_keyboard)
 
     await update.message.reply_text(
-        f'• New <b>{Timescale} {category}</b>\n• Amount: <b>{amount:.2f}$</b>\n• Reason: <b>{reason}</b>',
+        f'• New <b>{Timescale} {category}</b>\n• Amount: $<b>{amount:.2f}</b>\n• Reason: <b>{reason}</b>',
         parse_mode='HTML',
         reply_markup=reply_markup
     )

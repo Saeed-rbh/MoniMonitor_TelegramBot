@@ -36,13 +36,16 @@ async def handle_event(event):
     app = ApplicationBuilder().token(BOT_TOKEN).build()
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("new", new_transaction))
+    app.add_handler(CommandHandler("i", record_daily_Income))
+    app.add_handler(CommandHandler("mi", record_monthly_Income))
+
     app.add_handler(CommandHandler("monthly", monthly_Instructions))
     app.add_handler(CommandHandler("history", history))
     app.add_handler(CommandHandler("clear", clear_history))
     app.add_handler(CommandHandler("s", record_daily_Spending))
-    app.add_handler(CommandHandler("i", record_daily_Income))
+    
     app.add_handler(CommandHandler("ms", record_monthly_Spending))
-    app.add_handler(CommandHandler("mi", record_monthly_Income))
+    
     app.add_handler(CommandHandler("d", delete_transaction))
     app.add_handler(CommandHandler("m", modify_transaction))
     
