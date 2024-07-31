@@ -13,6 +13,7 @@ from Functions.history import history
 from Functions.clear_history import clear_history
 from Functions.delete_transaction import delete_transaction
 from Functions.modify_transaction import modify_transaction
+from Functions.new_transaction import new_transaction
 
 from Functions.record_button_click import record_button_click
 
@@ -34,6 +35,7 @@ async def handle_event(event):
     # Create the Application instance
     app = ApplicationBuilder().token(BOT_TOKEN).build()
     app.add_handler(CommandHandler("start", start))
+    app.add_handler(CommandHandler("new", new_transaction))
     app.add_handler(CommandHandler("monthly", monthly_Instructions))
     app.add_handler(CommandHandler("history", history))
     app.add_handler(CommandHandler("clear", clear_history))
