@@ -47,6 +47,7 @@ async def handle_event(event):
     app.add_handler(CallbackQueryHandler(record_button_click))
 
     # app.add_handler(CommandHandler("access", user_password))
+    print("Handlers added")
 
     # app.add_handler(CommandHandler("analyze", analyze))
     # 
