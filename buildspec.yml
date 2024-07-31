@@ -10,8 +10,14 @@ phases:
     commands:
       - echo "Zipping deployment package..."
       - cd lib
+      - echo "Current directory: $(pwd)"
+      - echo "Listing files in lib:"
+      - ls -la
       - zip -r9 ../deployment_package.zip .
       - cd ..
+      - echo "Current directory after returning to root: $(pwd)"
+      - echo "Listing files in root:"
+      - ls -la
       - zip -g deployment_package.zip lambda_function.py
   post_build:
     commands:
