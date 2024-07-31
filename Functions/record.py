@@ -4,7 +4,7 @@ from telegram.ext import ContextTypes
 from Functions.extract_float import extract_float
 
 async def record_daily_Expenses(update, context):
-    await record(update, context, 'Expenses', 'daily')
+    await record(update, context, 'Expense', 'daily')
 
 async def record_daily_Income(update, context):
     await record(update, context, 'Income', 'daily')
@@ -13,7 +13,7 @@ async def record_daily_Saving(update, context):
     await record(update, context, 'Save&Invest', 'daily')
 
 async def record_monthly_Expenses(update, context):
-    await record(update, context, 'Expenses', 'monthly')
+    await record(update, context, 'Expense', 'monthly')
 
 async def record_monthly_Income(update, context):
     await record(update, context, 'Income', 'monthly')

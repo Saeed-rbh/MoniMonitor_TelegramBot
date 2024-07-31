@@ -37,8 +37,8 @@ async def handle_event(event):
     app.add_handler(CommandHandler("mi", record_monthly_Income))
     app.add_handler(CommandHandler("e", record_daily_Expenses))
     app.add_handler(CommandHandler("me", record_monthly_Expenses))
-    app.add_handler(CommandHandler("e", record_daily_Saving))
-    app.add_handler(CommandHandler("me", record_monthly_Saving))
+    app.add_handler(CommandHandler("s", record_daily_Saving))
+    app.add_handler(CommandHandler("ms", record_monthly_Saving))
 
     app.add_handler(CommandHandler("monthly", monthly_Instructions))
     app.add_handler(CommandHandler("history", history))
