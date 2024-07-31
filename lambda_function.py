@@ -16,7 +16,7 @@ from Functions.modify_transaction import modify_transaction
 
 from Functions.record_button_click import record_button_click
 
-from Functions.user_password import user_password
+# from Functions.user_password import user_password
 
 # from Functions.send_files import send_files
 # from Functions.analyze import analyze
@@ -46,7 +46,7 @@ async def handle_event(event):
     
     app.add_handler(CallbackQueryHandler(record_button_click))
 
-    app.add_handler(CommandHandler("access", user_password))
+    # app.add_handler(CommandHandler("access", user_password))
 
     # app.add_handler(CommandHandler("analyze", analyze))
     # 
