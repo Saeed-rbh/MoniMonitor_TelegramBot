@@ -4,6 +4,6 @@ def analyze_transactions(transactions,type):
     for transaction in transactions:
         if transaction['Category'] == 'Income':
             Income += float(transaction['Amount'])
-        elif transaction['Category'] == 'Spending':
+        elif transaction['Category'] == 'Expense':
             Spending += float(transaction['Amount'])
     return Income, Spending

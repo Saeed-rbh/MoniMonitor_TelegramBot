@@ -13,14 +13,13 @@ from Functions.modify_transaction import modify_transaction
 from Functions.new_transaction import new_transaction
 
 from Functions.record_button_click import record_button_click
+from Functions.UserData import UserData
 
 # from Functions.user_password import user_password
 
 # from Functions.send_files import send_files
 from Functions.analyze import analyze
 # from Functions.user_password import user_password
-
-# Initialize the bot with the token from environment variables
 BOT_TOKEN = os.environ.get('TELEGRAM_TOKEN')
 
 async def process_update(update: dict, application):
@@ -51,6 +50,7 @@ async def handle_event(event):
     # app.add_handler(CommandHandler("access", user_password))
 
     app.add_handler(CommandHandler("analyze", analyze))
+    app.add_handler(CommandHandler("UserData", UserData))
     
     # app.add_handler(CommandHandler("files", send_files))
 
