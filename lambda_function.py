@@ -17,7 +17,7 @@ from Functions.record_button_click import record_button_click
 # from Functions.user_password import user_password
 
 # from Functions.send_files import send_files
-# from Functions.analyze import analyze
+from Functions.analyze import analyze
 # from Functions.user_password import user_password
 
 # Initialize the bot with the token from environment variables
@@ -50,7 +50,7 @@ async def handle_event(event):
 
     # app.add_handler(CommandHandler("access", user_password))
 
-    # app.add_handler(CommandHandler("analyze", analyze))
+    app.add_handler(CommandHandler("analyze", analyze))
     
     # app.add_handler(CommandHandler("files", send_files))
 
