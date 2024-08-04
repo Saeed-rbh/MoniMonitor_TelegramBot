@@ -245,6 +245,7 @@ async def record_button_click(update, context):
 
         Label = categories[index] if index != '' else toModify['Label'],
 
+
         updateToDB = {
             "Timestamp": toModify['Timestamp'],
             "Category": Category,
