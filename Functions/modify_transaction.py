@@ -129,13 +129,13 @@ async def modify_transaction(update, context):
                 f"#{transaction_number+1} • {toModify['Category']}\n"
                 f'{temp_message_Date}'
                 f"• <b>Amount:</b> {toModify['Amount']}\n"
-                f"• <b>Reason:</b> {toModify['Reason']}\n\n"
+                f"• <b>Reason:</b> {toModify['Reason'].title()}\n\n"
 
                 'To:\n'
                 f"#{transaction_number+1} • {Category}\n"
                 f'{temp_message_Date}'
                 f"• <b>Amount:</b> {Amount}\n"
-                f"• <b>Reason:</b> {Reason}\n\n"
+                f"• <b>Reason:</b> {Reason.title()}\n\n"
             )
 
 
