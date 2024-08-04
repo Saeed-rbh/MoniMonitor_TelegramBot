@@ -21,13 +21,13 @@ async def record_button_click(update, context):
     if action == "add_to_daily_wallet":
         category = data[1]
         amount = float(data[2])
-        reason = data[3]      
+        reason = data[3].title()      
 
         timestamp = datetime.now().strftime('%Y-%m-%d %H:%M')
         printabletimestamp = datetime.strptime(timestamp, '%Y-%m-%d %H:%M').strftime('%H:%M - %d/%m/%Y')
 
         record_entry = {'Timestamp': timestamp,
-                        'Category': category.replace(" ", ""), 'Amount': amount, 'Reason': reason, 'Label': ''}
+                        'Category': category.replace(" ", ""), 'Amount': amount, 'Reason': reason.title(), 'Label': ''}
 
         user_id = str(update.callback_query.from_user.id)
         record_type = "daily"
@@ -49,7 +49,7 @@ async def record_button_click(update, context):
 
         await query.message.reply_text(
             '----------\n'
-            f'  Successfully added to <b>Daily</b> Wallet:\n\n• New <b>Daily {category}</b>\n• Amount: $<b>{amount:.2f}</b>\n• Reason: <b>{reason}</b>\n• Time: <b>{printabletimestamp}</b>\n'
+            f'  Successfully added to <b>Daily</b> Wallet:\n\n• New <b>Daily {category}</b>\n• Amount: $<b>{amount:.2f}</b>\n• Reason: <b>{reason.title()}</b>\n• Time: <b>{printabletimestamp}</b>\n'
             '----------\n',
             parse_mode='HTML',
             reply_markup=reply_markup
@@ -59,12 +59,12 @@ async def record_button_click(update, context):
     elif action == "add_to_monthly_wallet":
             category = data[1]
             amount = float(data[2])
-            reason = data[3]
+            reason = data[3].title()
 
             timestamp = datetime.now().strftime('%Y-%m-%d %H:%M')
 
             record_entry = {'Timestamp': timestamp,
-                        'Category': category.replace(" ", ""), 'Amount': amount, 'Reason': reason, 'Label': ''}
+                        'Category': category.replace(" ", ""), 'Amount': amount, 'Reason': reason.title(), 'Label': ''}
 
             user_id = str(update.callback_query.from_user.id)
             record_type = "monthly"
@@ -85,7 +85,7 @@ async def record_button_click(update, context):
 
             await query.message.reply_text(
                 '----------\n'
-                f'  Successfully added to <b>Monthly</b> Wallet:\n\n• New <b>Monthly {category}</b>\n• Amount: $<b>{amount:.2f}</b>\n• Reason: <b>{reason}</b>\n'
+                f'  Successfully added to <b>Monthly</b> Wallet:\n\n• New <b>Monthly {category}</b>\n• Amount: $<b>{amount:.2f}</b>\n• Reason: <b>{reason.title()}</b>\n'
                 '----------\n',
                 parse_mode='HTML',
                 reply_markup=reply_markup
@@ -155,7 +155,7 @@ async def record_button_click(update, context):
                 f"• #{TransactionNumber} • {temporary_records['Category']}\n"
                 f"• <b>Date:</b> {temporary_records['Timestamp'][2:10]} - {temporary_records['Timestamp'][11:]}\n"
                 f"• <b>Amount:</b> {temporary_records['Amount']}\n"
-                f"• <b>Reason:</b> {temporary_records['Reason']}\n"
+                f"• <b>Reason:</b> {temporary_records['Reason'].title()}\n"
                 '----------\n'
             )
         elif type == 'Monthly':
@@ -165,7 +165,7 @@ async def record_button_click(update, context):
                 f"• <b>{type}</b> Transaction:\n"
                 f"• #0{TransactionNumber} • {temporary_records['Category']}\n"
                 f"• <b>Amount:</b> {temporary_records['Amount']}\n"
-                f"• <b>Reason:</b> {temporary_records['Reason']}\n"
+                f"• <b>Reason:</b> {temporary_records['Reason'].title()}\n"
                 '----------\n'
             )
 
@@ -184,7 +184,7 @@ async def record_button_click(update, context):
         transactionid = data[2]
         Category = data[3]
         Amount = data[4]
-        Reason = data[5]
+        Reason = data[5].title()
         transaction_number = data[6]
         index = data[7]
 
@@ -249,7 +249,7 @@ async def record_button_click(update, context):
             "Timestamp": toModify['Timestamp'],
             "Category": Category,
             "Amount": Amount,
-            "Reason": Reason if Reason != '' else toModify['Reason'],
+            "Reason": Reason.title() if Reason != '' else toModify['Reason'],
             "Type": type,
             "Label": Label,
         }
@@ -270,7 +270,7 @@ async def record_button_click(update, context):
             f"• {updateToDB['Category']}\n"
             f"{message_date}"
             f"• <b>Amount:</b> {updateToDB['Amount']}\n"
-            f"• <b>Reason:</b> {updateToDB['Reason']}\n"
+            f"• <b>Reason:</b> {updateToDB['Reason'].title()}\n"
             '----------\n'
         )  
         await query.message.reply_text(message, parse_mode='HTML')
