@@ -22,8 +22,8 @@ async def modify_transaction(update, context):
 
         if InOut == 'i' or InOut == 'I' :
             Category = 'Income'
-        elif InOut == 's' or InOut == 'S':
-            Category = 'Spending'
+        elif InOut == 'e' or InOut == 'E':
+            Category = 'Expense'
         
         message = update.message.text
 

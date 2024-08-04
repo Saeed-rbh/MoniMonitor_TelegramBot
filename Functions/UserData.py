@@ -9,5 +9,5 @@ async def UserData(update: Update, context: CallbackContext) -> None:
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
 
-    update.message.reply_text("Click the button below to open the mini app:", reply_markup=reply_markup)
+    await update.message.reply_text("Click the button below to open the mini app:", reply_markup=reply_markup)
 

@@ -46,12 +46,10 @@ async def handle_event(event):
     app.add_handler(CommandHandler("m", modify_transaction))
     
     app.add_handler(CallbackQueryHandler(record_button_click))
-
-    # app.add_handler(CommandHandler("access", user_password))
-
     app.add_handler(CommandHandler("analyze", analyze))
     app.add_handler(CommandHandler("UserData", UserData))
-    
+
+    # app.add_handler(CommandHandler("access", user_password))
     # app.add_handler(CommandHandler("files", send_files))
 
 
