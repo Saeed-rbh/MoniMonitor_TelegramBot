@@ -42,9 +42,16 @@ async def history(update, context):
         counter = 0
         
         for number,entry in enumerate(monthly_records):
+            if entry['Category'] == 'Spending':
+                BalanceIcon = '🔴'
+            elif entry['Category'] == 'Income':
+                BalanceIcon = '🟢'
+            else:
+                BalanceIcon = '⚪️'
+            
             if number < counter+Messagelength:
                 message += (
-                    f"• #0{number+1} • {entry['Category']}\n"
+                    f"{BalanceIcon} #0{number+1} • {entry['Category']}\n"
                     f"• <b>Amount:</b> {entry['Amount']}\n"
                     f"• <b>Reason:</b> {entry['Reason']}\n\n"
                 )
@@ -57,7 +64,7 @@ async def history(update, context):
                 '• <b>Your Monthly Transaction History</b>:\n'
                 '----------\n')
                 message += (
-                    f"• #0{number+1} • {entry['Category']}\n"
+                    f"{BalanceIcon} #0{number+1} • {entry['Category']}\n"
                     f"• <b>Amount:</b> {entry['Amount']}\n"
                     f"• <b>Reason:</b> {entry['Reason']}\n\n"
                 )
@@ -75,9 +82,15 @@ async def history(update, context):
         
         counter = 0
         for number,entry in enumerate(daily_records):
+            if entry['Category'] == 'Spending':
+                BalanceIcon = '🔴'
+            elif entry['Category'] == 'Income':
+                BalanceIcon = '🟢'
+            else:
+                BalanceIcon = '⚪️'
             if number < counter+Messagelength:
                 message += (
-                    f"• #{number+1} • {entry['Category']}\n"
+                    f"{BalanceIcon} #{number+1} • {entry['Category']}\n"
                     f"• <b>Date:</b> {entry['Timestamp'][2:10]} - {entry['Timestamp'][11:]}\n"
                     f"• <b>Amount:</b> {entry['Amount']}\n"
                     f"• <b>Reason:</b> {entry['Reason']}\n\n"
@@ -91,7 +104,7 @@ async def history(update, context):
                     '• <b>Your Daily Transaction History</b>:\n'
                     '----------\n')
                 message += (
-                    f"• #{number+1} • {entry['Category']}\n"
+                    f"{BalanceIcon} #{number+1} • {entry['Category']}\n"
                     f"• <b>Date:</b> {entry['Timestamp'][2:10]} - {entry['Timestamp'][11:]}\n"
                     f"• <b>Amount:</b> {entry['Amount']}\n"
                     f"• <b>Reason:</b> {entry['Reason']}\n\n"

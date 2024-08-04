@@ -40,18 +40,19 @@ async def analyze(update, context):
         Balance = Income - Spending
         Date = datetime.now().strftime('%B - %Y')
         Balance_sign = '+' if Balance >= 0 else '-'
-        Income_by_date = extract_by_date(daily_transactions,'Income')
-        Spending_by_date = extract_by_date(daily_transactions,'Spending')
+        BalanceIcon = '🟢' if Balance >= 0 else '🔴'
+        # Income_by_date = extract_by_date(daily_transactions,'Income')
+        # Spending_by_date = extract_by_date(daily_transactions,'Spending')
 
-        balance_by_date = [Income - Spending for Income, Spending in zip(Income_by_date, Spending_by_date)]
+        # balance_by_date = [Income - Spending for Income, Spending in zip(Income_by_date, Spending_by_date)]
         # Income_image = plot_by_date(Income_by_date,monthly_Income,'Income')
         # Spending_image = plot_by_date(Spending_by_date,-monthly_Spending,'Spending')
         # balance_by_date_image = plot_by_date(balance_by_date,monthly_Income-monthly_Spending,'Balance')
         await context.bot.delete_message(chat_id=update.effective_chat.id, message_id=message.message_id)
 
         message = ('----------\n'
-                    '• <b>Your Balance to date</b>:\n'
-                    f'• {Date}\n'
+                    f'{BalanceIcon} <b>Your Balance to date</b>:\n'
+                    f'       {Date}\n'
                     '----------\n'
                     f'• Total <b>Income:</b>  +${round(Income,2)}\n'
                     f'• Totla <b>Spending:</b> -${round(Spending,2)}\n'
