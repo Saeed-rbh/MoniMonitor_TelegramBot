@@ -6,7 +6,8 @@ def record_to_db(record_entry, user_id, record_type):
     recordClient = boto3.client('lambda')
 
     inputParams = {
-            "record_entry"   : record_entry['Reason'],
+            "Reason"   : record_entry['Reason'],
+            "Category" : record_entry['Category'],
         }
     
     if (record_entry['Reason'] == 'No Reason Provided'):

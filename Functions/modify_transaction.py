@@ -51,7 +51,8 @@ async def modify_transaction(update, context):
             Reason = parts[4]
             recordClient = boto3.client('lambda')
             inputParams = {
-                "record_entry"   : Reason,
+                "Reason"   : Reason,
+                "Category" : Category,
             }
             response = recordClient.invoke(
                 FunctionName='arn:aws:lambda:us-east-1:533267242577:function:MoniMonitor_Openai',
