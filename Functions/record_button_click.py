@@ -186,7 +186,7 @@ async def record_button_click(update, context):
         Amount = data[4]
         Reason = data[5]
         transaction_number = data[6]
-        Label = data[7]
+        index = data[7]
 
         message = await query.message.reply_text(
             '• Please wait...\n',
@@ -210,13 +210,48 @@ async def record_button_click(update, context):
             await query.message.reply_text(f"Transaction {transaction_number+1} not found.")
             return
 
+        expense_categories = [
+            "Housing & Utilities",
+            "Transportation",
+            "Groceries & Dining",
+            "Medical & Health",
+            "Education & Training",
+            "Leisure & Recreation"
+            "Other"
+        ]
+
+        Income_categories = [
+            "Employment Income", 
+            "Employee Benefits", 
+            "Government Benefits",
+            "Investment Income" 
+            "Other"
+        ]
+
+        SaveInvest_categories = [
+            "Savings Account", 
+            "Stocks", 
+            "Cryptocurrency",
+            "Real Estate" 
+            "Other"
+        ]
+        
+        if Category == 'income' :
+            categories = Income_categories
+        elif Category == 'Expense':
+            categories = expense_categories
+        elif Category == 'Save & Invest':
+            categories = SaveInvest_categories
+
+        Label = categories[index] if index != '' else toModify['Label'],
+
         updateToDB = {
             "Timestamp": toModify['Timestamp'],
             "Category": Category,
             "Amount": Amount,
             "Reason": Reason if Reason != '' else toModify['Reason'],
             "Type": type,
-            "Label": Label if Label != '' else toModify['Label'],
+            "Label": Label,
         }
         
 

@@ -4,6 +4,33 @@ import boto3
 import json
 
 async def modify_transaction(update, context):
+
+    expense_categories = [
+    "Housing & Utilities",
+    "Transportation",
+    "Groceries & Dining",
+    "Medical & Health",
+    "Education & Training",
+    "Leisure & Recreation"
+    "Other"
+    ]
+
+    Income_categories = [
+        "Employment Income", 
+        "Employee Benefits", 
+        "Government Benefits",
+        "Investment Income" 
+        "Other"
+    ]
+
+    SaveInvest_categories = [
+        "Savings Account", 
+        "Stocks", 
+        "Cryptocurrency",
+        "Real Estate" 
+        "Other"
+    ]
+
     message = update.message.text
     parts = message.split(maxsplit=4)
     try:
@@ -24,8 +51,13 @@ async def modify_transaction(update, context):
 
         if InOut == 'i' or InOut == 'I' :
             Category = 'Income'
+            categories = Income_categories
         elif InOut == 'e' or InOut == 'E':
             Category = 'Expense'
+            categories = expense_categories
+        elif InOut == 's' or InOut == 'S':
+            Category = 'Save & Invest'
+            categories = SaveInvest_categories
         
         message = update.message.text
 
@@ -61,9 +93,10 @@ async def modify_transaction(update, context):
             )
             response_payload = json.loads(response['Payload'].read())
             label = response_payload['body']
+            index = categories.index(label)
         except:
             Reason = ''
-            label = ''
+            index = ''
 
 
         if message_type == 'daily':
@@ -81,7 +114,7 @@ async def modify_transaction(update, context):
             f"{toModify['Transaction_Id'][33]}"
         )
 
-        modify_data = f"Modify_it:{message_type}:{transaction_id_check}:{Category}:{Amount}:{Reason}:{transaction_number_0}:{label}"
+        modify_data = f"Modify_it:{message_type}:{transaction_id_check}:{Category}:{Amount}:{Reason}:{transaction_number_0}:{index}"
         ignore_data = "Ignore_it"
  
 
