@@ -82,7 +82,7 @@ async def history(update, context):
         
         counter = 0
         for number,entry in enumerate(daily_records):
-            if entry['Category'] == 'Spending':
+            if entry['Category'] == 'Expense':
                 BalanceIcon = '🔴'
             elif entry['Category'] == 'Income':
                 BalanceIcon = '🟢'
