@@ -1,5 +1,7 @@
 from Functions.read_from_db import read_from_db
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+import boto3
+import json
 
 async def modify_transaction(update, context):
     message = update.message.text
@@ -47,8 +49,21 @@ async def modify_transaction(update, context):
         
         try:    
             Reason = parts[4]
+            recordClient = boto3.client('lambda')
+            inputParams = {
+                "record_entry"   : Reason,
+            }
+            response = recordClient.invoke(
+                FunctionName='arn:aws:lambda:us-east-1:533267242577:function:MoniMonitor_Openai',
+                InvocationType='RequestResponse',
+                Payload=json.dumps(inputParams)
+            )
+            response_payload = json.loads(response['Payload'].read())
+            label = response_payload['body']
         except:
-            Reason = toModify['Reason']
+            Reason = ''
+            label = ''
+
 
         if message_type == 'daily':
             temp_message_Date= f"• <b>Date:</b> {toModify['Timestamp'][2:10]} - {toModify['Timestamp'][11:]}\n"
@@ -65,7 +80,7 @@ async def modify_transaction(update, context):
             f"{toModify['Transaction_Id'][33]}"
         )
 
-        modify_data = f"Modify_it:{message_type}:{transaction_id_check}:{Category}:{Amount}:{Reason}:{transaction_number_0}"
+        modify_data = f"Modify_it:{message_type}:{transaction_id_check}:{Category}:{Amount}:{Reason}:{transaction_number_0}:{label}"
         ignore_data = "Ignore_it"
  
 

@@ -3,7 +3,7 @@ import boto3
 
 def read_from_db(user_id):
     inputParams = {
-        'status': 'read',
+        'status': 'readCorrent',
         'user_id': user_id,
     }
     

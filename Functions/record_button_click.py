@@ -186,7 +186,7 @@ async def record_button_click(update, context):
         Amount = data[4]
         Reason = data[5]
         transaction_number = data[6]
-        print(transaction_number[0],'hereeee')
+        Label = data[7]
 
         message = await query.message.reply_text(
             '• Please wait...\n',
@@ -214,9 +214,9 @@ async def record_button_click(update, context):
             "Timestamp": toModify['Timestamp'],
             "Category": Category,
             "Amount": Amount,
-            "Reason": Reason,
+            "Reason": Reason if Reason != '' else toModify['Reason'],
             "Type": type,
-            "Label": toModify['Label']
+            "Label": Label if Label != '' else toModify['Label'],
         }
         
 
